@@ -187,6 +187,7 @@ router.post("/find-one-by-food", function (req, res, next) {
 
 const findById = require("./myApp.js").findPersonById;
 router.get("/find-by-id", function (req, res, next) {
+  console.log('GOT HERE!', req);
   let t = setTimeout(() => {
     next({ message: "timeout" });
   }, TIMEOUT);
@@ -195,7 +196,7 @@ router.get("/find-by-id", function (req, res, next) {
     if (err) {
       return next(err);
     }
-    console.log(pers._id, pers); // --
+    console.log(pers); // --
     findById(pers._id, function (err, data) {
       clearTimeout(t);
       if (err) {
