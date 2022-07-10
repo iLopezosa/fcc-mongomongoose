@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 console.log(process.env)
 
-mongoose.connect('mongodb+srv://n4xo:980822@fcc-mongo-ilopezosa.zmzkq0a.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let Person;
 
