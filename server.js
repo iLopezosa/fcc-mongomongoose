@@ -195,6 +195,7 @@ router.get("/find-by-id", function (req, res, next) {
     if (err) {
       return next(err);
     }
+    console.log(pers._id, pers); // --
     findById(pers._id, function (err, data) {
       clearTimeout(t);
       if (err) {
