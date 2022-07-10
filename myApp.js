@@ -20,7 +20,7 @@ const createAndSavePerson = (done) => {
     favoriteFoods: ['Pizza', 'Pasta']
   });
 
-  pers.save().then(doc => { console.log(doc) }).catch(err => { console.log(err) });
+  pers.save((err, data) => { console.log(data) });
 
   if(error) return done(error);
   done(null, pers);
