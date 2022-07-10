@@ -20,7 +20,7 @@ const createAndSavePerson = (done) => {
     favoriteFoods: ['Pizza', 'Pasta']
   });
 
-  pers.save((err, data) => err ? console.error(err) : done(null, data));
+  pers.save((err, data) => { if(err) console.error(err); done(null, data)});
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
