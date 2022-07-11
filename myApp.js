@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 let personSchema = new mongoose.Schema({
   name: {type: String, required: true},
-  age: {type: Number, validate: (value) => value > 0 && value < 120},
+  age: {type: Number, validate: (value) => value >= 0 && value < 150},
   favoriteFoods: [String]
 });
 
@@ -36,11 +36,7 @@ const findOneByFood = (food, done) => {
 };
 
 const findPersonById = (personId, done) => {
-  Person.findById(personId, (err, data) => {
-    console.log('data', data);
-    if(err) return done(err);
-    done(null, data);
-  });
+  Person.findById(personId, (err, data) => err ? console.error(err) : done(null, data));
 };
 
 const findEditThenSave = (personId, done) => {
